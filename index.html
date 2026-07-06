@@ -61,8 +61,29 @@ function update(){document.getElementById('count').textContent=cart.length;}
 function openCart(){document.getElementById('modal').classList.add('show');renderCart();}
 function closeCart(){document.getElementById('modal').classList.remove('show');}
 function renderCart(){let sum=cart.reduce((a,b)=>a+b.price,0);document.getElementById('cartList').innerHTML=cart.length?cart.map((x,i)=>`<div class="cartLine"><span>${i+1}. ${x.name}</span><b>${x.price} ₽</b></div>`).join(''):'<p class="sub">Корзина пуста</p>';document.getElementById('total').textContent='Итого: '+sum+' ₽';document.getElementById('freeNote').textContent=sum>=1000?'Доставка бесплатная':'До бесплатной доставки: '+(1000-sum)+' ₽';}
-function sendOrder(){let sum=cart.reduce((a,b)=>a+b.price,0);let msg=`Новый заказ Mangal House%0A%0A${cart.map((x,i)=>`${i+1}. ${x.name} — ${x.price} ₽`).join('%0A')}%0A%0AИтого: ${sum} ₽%0AДоставка: ${sum>=1000?'бесплатно':'уточнить'}%0A%0AИмя: ${encodeURIComponent(document.getElementById('clientName').value)}%0AТелефон: ${encodeURIComponent(document.getElementById('clientPhone').value)}%0AАдрес: ${encodeURIComponent(document.getElementById('clientAddress').value)}%0AКомментарий: ${encodeURIComponent(document.getElementById('comment').value)}`;navigator.clipboard&&navigator.clipboard.writeText(decodeURIComponent(msg.replaceAll('%0A','\n')));window.location.href='https://t.me/share/url?url=&text='+msg;}
-renderMenu();
+function sendOrder(){
+  let sum = cart.reduce((a,b)=>a+b.price,0);
+
+  const data = {
+    name: document.getElementById('clientName').value,
+    phone: document.getElementById('clientPhone').value,
+    address: document.getElementById('clientAddress').value,
+    comment: document.getElementById('comment').value,
+    order: cart.map((x,i)=>`${i+1}. ${x.name} — ${x.price} ₽`).join('\n') +
+           `\n\nИтого: ${sum} ₽\nДоставка: ${sum>=1000?'бесплатно':'уточнить'}`
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbxIv1I_r8ZXgeCXlMzQh1z8HAcJm2jyh66nPsEuAEgh52xxKasMC4tN1ajH7XmhR35Z_A/exec", {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify(data)
+  });
+
+  alert("Ваш заказ отправлен ✅");
+  cart = [];
+  update();
+  closeCart();
+}
 </script>
 </body>
 </html>
