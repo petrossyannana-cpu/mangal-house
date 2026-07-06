@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mangal House — шашлык, шаурма, бургеры в Ставрополе</title>
+  <meta name="description" content="Mangal House в Ставрополе: шашлык, шаурма, бургеры, блюда на углях. Бесплатная доставка от 1000 ₽. ул. Гражданская, 2. +7 (968) 261-45-45" />
+  <style>
+    :root{--bg:#080808;--card:#141414;--gold:#d8a84b;--gold2:#ffcf70;--text:#fff;--muted:#c9c9c9;--line:#2b2b2b;--red:#e5452f}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}.top{position:sticky;top:0;z-index:20;background:rgba(8,8,8,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}.logo{font-weight:900;letter-spacing:.08em;color:var(--gold2);font-size:20px}.navlinks{display:flex;gap:14px;font-size:14px;color:var(--muted)}
+    .hero{min-height:78vh;display:grid;place-items:center;background:radial-gradient(circle at top right,rgba(216,168,75,.22),transparent 34%),linear-gradient(135deg,#090909,#17110a 55%,#050505)}
+    .heroBox{padding:70px 0;text-align:center}.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold2);padding:8px 14px;border-radius:999px;font-size:13px;margin-bottom:18px}
+    h1{font-size:clamp(42px,8vw,88px);line-height:.95;margin:0 0 16px;font-weight:950}.hero p{color:var(--muted);font-size:18px;max-width:680px;margin:0 auto 28px}
+    .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.btn{border:0;border-radius:16px;padding:15px 20px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171008}.dark{background:#1d1d1d;color:#fff;border:1px solid #333}
+    section{padding:56px 0;border-top:1px solid var(--line)} h2{font-size:34px;margin:0 0 10px}.sub{color:var(--muted);margin:0 0 26px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .card{background:linear-gradient(180deg,#171717,#101010);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 20px 50px rgba(0,0,0,.25)}.cat{color:var(--gold2);font-size:22px;margin:18px 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px}
+    .item{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:12px 0;border-bottom:1px dashed #2d2d2d}.item:last-child{border-bottom:0}.name{font-weight:700}.price{color:var(--gold2);font-weight:900;white-space:nowrap}.add{background:#242424;color:#fff;border:1px solid #383838;border-radius:12px;padding:8px 10px;margin-left:8px}
+    .cart{position:fixed;right:14px;bottom:14px;z-index:30;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#140d04;border:0;border-radius:999px;padding:14px 18px;font-weight:950;box-shadow:0 20px 55px rgba(216,168,75,.25)}
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:40;padding:18px;overflow:auto}.modal.show{display:block}.modalBox{background:#111;border:1px solid var(--line);border-radius:24px;max-width:720px;margin:30px auto;padding:20px}.cartLine{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #292929;padding:12px 0}.x{float:right;background:#222;color:#fff;border:1px solid #444;border-radius:12px;padding:8px 11px}.field{width:100%;background:#0a0a0a;color:#fff;border:1px solid #333;border-radius:14px;padding:14px;margin:8px 0;font-size:16px}.note{background:#1a1206;border:1px solid #5a3d12;color:#ffe3a4;border-radius:18px;padding:14px}.footer{padding:30px 0;color:#aaa;text-align:center;border-top:1px solid var(--line)}
+    @media(max-width:760px){.nav{align-items:flex-start;gap:10px}.navlinks{flex-wrap:wrap;justify-content:flex-end}.item{align-items:flex-start}.heroBox{text-align:left}.btns{justify-content:flex-start}h1{font-size:48px}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap nav"><a class="logo" href="#home">MANGAL HOUSE</a><nav class="navlinks"><a href="#menu">Меню</a><a href="#delivery">Доставка</a><a href="#contacts">Контакты</a><a href="tel:+79682614545">Позвонить</a></nav></div></header>
+  <main>
+    <section class="hero" id="home"><div class="wrap heroBox"><span class="badge">Authentic Grill • Street Food</span><h1>MANGAL<br>HOUSE</h1><p>Шашлык, шаурма, бургеры и блюда на углях в Ставрополе. Работаем каждый день с 8:00 до 21:00.</p><div class="btns"><a class="btn primary" href="#menu">Смотреть меню</a><a class="btn dark" href="tel:+79682614545">📞 +7 (968) 261-45-45</a></div></div></section>
+    <section id="menu"><div class="wrap"><h2>Меню</h2><p class="sub">Добавьте блюда в корзину и отправьте заказ удобным способом.</p><div id="menuBox"></div></div></section>
+    <section id="delivery"><div class="wrap grid"><div class="card"><h2>Доставка</h2><p class="sub">Бесплатная доставка от <b style="color:var(--gold2)">1000 ₽</b>.</p><p>Заказы принимаем ежедневно: <b>8:00–21:00</b>.</p></div><div class="card"><h2>Как заказать</h2><p>1. Выберите блюда<br>2. Откройте корзину<br>3. Заполните имя, телефон и адрес<br>4. Отправьте заказ</p></div></div></section>
+    <section id="contacts"><div class="wrap grid"><div class="card"><h2>Контакты</h2><p>📍 Ставрополь, ул. Гражданская, 2</p><p>📞 <a href="tel:+79682614545">+7 (968) 261-45-45</a></p><p>⏰ 8:00–21:00</p></div><div class="card"><h2>Карта</h2><iframe title="map" src="https://www.google.com/maps?q=%D0%A1%D1%82%D0%B0%D0%B2%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%2C%20%D1%83%D0%BB.%20%D0%93%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2C%202&output=embed" width="100%" height="260" style="border:0;border-radius:18px" loading="lazy"></iframe></div></div></section>
+  </main>
+  <button class="cart" onclick="openCart()">🛒 Корзина: <span id="count">0</span></button>
+  <div class="modal" id="modal"><div class="modalBox"><button class="x" onclick="closeCart()">✕</button><h2>Ваш заказ</h2><div id="cartList"></div><h3 id="total">Итого: 0 ₽</h3><div class="note" id="freeNote">До бесплатной доставки: 1000 ₽</div><input class="field" id="clientName" placeholder="Ваше имя"><input class="field" id="clientPhone" placeholder="Телефон"><input class="field" id="clientAddress" placeholder="Адрес доставки"><textarea class="field" id="comment" placeholder="Комментарий к заказу"></textarea><button class="btn primary" style="width:100%" onclick="sendOrder()">Отправить заказ</button><p class="sub">Кнопка создаст текст заказа. Его можно отправить в Telegram/WhatsApp или по телефону.</p></div></div>
+  <footer class="footer"><div class="wrap">© Mangal House • Ставрополь, ул. Гражданская, 2</div></footer>
+<script>
+const MENU=[
+['МАНГАЛ ГРИЛЬ — Свинина',[['Мякоть',220],['Антрекот',220],['Рёбра',220],['Шея без кости',240]]],
+['МАНГАЛ ГРИЛЬ — Баранина',[['Мякоть',260],['Пистолеты',280]]],
+['МАНГАЛ ГРИЛЬ — Курица',[['Крыло',150],['Голень',150],['Филе',170]]],
+['МАНГАЛ ГРИЛЬ — Говядина',[['Печень по-царски',250]]],
+['БЛЮДА НА УГЛЯХ — Сувлаки',[['С курицей',160],['С говядиной',210],['Со свининой',180]]],
+['Люля-кебаб',[['С курицей',170],['С говядиной',230],['С бараниной',240]]],
+['Шаурма классика',[['С курицей',270],['Со свининой',320]]],
+['Сэндвич',[['С курицей',280],['С ветчиной',260]]],
+['Гиро',[['В лаваше',280],['В лаваше мега',340]]],
+['В таше',[['На тарелке',350]]],
+['Бургеры',[['С куриным стейком',350],['С куриным фаршем',370],['Супер говяжий',540],['Супер сырный',600]]],
+['Хот-дог',[['В булочке',240],['В лаваше',240]]],
+['Закуски',[['Картошка фри',190],['Картофель по-деревенски',190],['Креветки в кляре',340],['Сырные палочки',230],['Наггетсы',230]]],
+['Рыба на мангале',[['Карп',250],['Сёмга',350],['Форель',300]]],
+['Овощи на мангале',[['Грибы шампиньоны',150],['Картофель с салом',70],['Талая картошка',80],['Аджапсандали','уточнить']]],
+['Суп',[['Хаш',450]]],
+['Дополнительные ингредиенты к шаурме',[['Сыр',60],['Картошка',60],['Халапеньо',60],['Грибы',60]]],
+['Соусы в ассортименте',[['Белый фирменный',90],['Красный фирменный',90],['Наршараб',60],['Соусы Heinz',60]]]
+];
+let cart=[];
+function renderMenu(){document.getElementById('menuBox').innerHTML=MENU.map(([cat,items])=>`<h3 class="cat">${cat}</h3><div class="card">${items.map(([n,p])=>`<div class="item"><div><div class="name">${n}</div><div class="sub" style="margin:3px 0 0">${cat}</div></div><div><span class="price">${p==='уточнить'?'уточнить':p+' ₽'}</span>${p==='уточнить'?'':`<button class="add" onclick="add('${(cat+' — '+n).replace(/'/g,"\\'")}',${p})">+</button>`}</div></div>`).join('')}</div>`).join('')}
+function add(name,price){cart.push({name,price});update();}
+function update(){document.getElementById('count').textContent=cart.length;}
+function openCart(){document.getElementById('modal').classList.add('show');renderCart();}
+function closeCart(){document.getElementById('modal').classList.remove('show');}
+function renderCart(){let sum=cart.reduce((a,b)=>a+b.price,0);document.getElementById('cartList').innerHTML=cart.length?cart.map((x,i)=>`<div class="cartLine"><span>${i+1}. ${x.name}</span><b>${x.price} ₽</b></div>`).join(''):'<p class="sub">Корзина пуста</p>';document.getElementById('total').textContent='Итого: '+sum+' ₽';document.getElementById('freeNote').textContent=sum>=1000?'Доставка бесплатная':'До бесплатной доставки: '+(1000-sum)+' ₽';}
+function sendOrder(){let sum=cart.reduce((a,b)=>a+b.price,0);let msg=`Новый заказ Mangal House%0A%0A${cart.map((x,i)=>`${i+1}. ${x.name} — ${x.price} ₽`).join('%0A')}%0A%0AИтого: ${sum} ₽%0AДоставка: ${sum>=1000?'бесплатно':'уточнить'}%0A%0AИмя: ${encodeURIComponent(document.getElementById('clientName').value)}%0AТелефон: ${encodeURIComponent(document.getElementById('clientPhone').value)}%0AАдрес: ${encodeURIComponent(document.getElementById('clientAddress').value)}%0AКомментарий: ${encodeURIComponent(document.getElementById('comment').value)}`;navigator.clipboard&&navigator.clipboard.writeText(decodeURIComponent(msg.replaceAll('%0A','\n')));window.location.href='https://t.me/share/url?url=&text='+msg;}
+renderMenu();
+</script>
+</body>
+</html>
