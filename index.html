@@ -1,161 +1,79 @@
-innerHTML = products.map((p,i)=>`
-    <div class="card">
-      <img src="${p.img}">
-      <div>
-        <h3>${p.name}</h3>
-        <p class="price">${p.price} ₽</p>
-        <button class="btn" onclick="addToCart(${i})">Добавить</button>
-      </div>
-    </div>
-  `).join("");
-}
-
-function addToCart(i){
-  cart.push(products[i]);
-  renderCart();
-}
-
-function renderCart(){
-  let sum = cart.reduce((a,b)=>a+b.price,0);
-
-  document.getElementById("cartList").innerHTML = cart.length
-  ? cart.map((x,i)=>`
-    <div class="cartLine">
-      <span>${i+1}. ${x.name}</span>
-      <b>${x.price} ₽</b>
-    </div>
-  `).join("")
-  : '<p class="sub">Корзина пуста</p>';
-
-  document.getElementById("total").textContent = "Итого: " + sum + " ₽";
-  document.getElementById("freeNote").textContent =
-  sum >= 1500 ? "Доставка бесплатная" : "До бесплатной доставки: " + (1500-sum) + " ₽";
-}
-
-function sendOrder(){
-  if(cart.length === 0){
-    alert("Корзина пуста");
-    return;
-  }
-
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let deliveryType = document.getElementById("deliveryType").value;
-  let address = document.getElementById("address").value;
-  let sum = cart.reduce((a,b)=>a+b.price,0);
-
-  let text =
-`🔥 Новый заказ Mangal House
-
-Имя: ${name}
-Телефон: ${phone}
-Способ: ${deliveryType}
-Адрес / комментарий: ${address}
-
-Заказ:
-${cart.map((x,i)=>`${i+1}. ${x.name} — ${x.price} ₽`).join("\n")}
-
-Итого: ${sum} ₽`;
-
-  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({chat_id:CHAT_ID,text:text})
-  })
-  .then(()=>alert("Заказ отправлен!"))
-  .catch(()=>alert("Ошибка отправки"));
-}
-
-renderMenu();
-</script>
-
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mangal House</title>
-
+<title>Mangal House — доставка еды</title>
 <style>
-body{margin:0;font-family:Arial;background:#111;color:#fff}
-header{background:#1b1b1b;text-align:center;padding:25px}
-.logo{font-size:34px;font-weight:900;color:#ffb22c}
-.sub{color:#ccc}
-.hero{text-align:center;padding:22px}
-.heroImg{width:100%;max-height:360px;object-fit:cover;border-radius:24px;margin-top:15px}
-.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;padding:20px}
-.card{background:#1d1d1d;border-radius:18px;overflow:hidden}
-.card img{width:100%;height:135px;object-fit:cover}
-.card div{padding:12px}
-.card h3{margin:0 0 8px;font-size:17px}
-.price{color:#ffb22c;font-weight:bold}
-.btn{background:#ffb22c;color:#111;border:0;border-radius:14px;padding:13px 18px;font-weight:800;width:100%;margin-top:8px}
-.cart{padding:20px;background:#181818}
-.cartLine{display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:8px 0}
-input,select,textarea{width:100%;box-sizing:border-box;padding:13px;margin:7px 0;border:0;border-radius:12px}
-footer{text-align:center;padding:20px;color:#aaa}
+:root{--bg:#0b0b0c;--card:#171719;--gold:#ffbf3c;--red:#ff3b30;--text:#fff;--muted:#b7b7b7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text)}a{text-decoration:none;color:inherit}
+.hero{min-height:92vh;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.42)),url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1600&q=85') center/cover;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.nav{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:950;font-size:25px}.logo span{color:var(--gold)}.cartBtn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:12px 16px;border-radius:999px}
+.heroBox{max-width:760px;margin-bottom:55px}.badge{display:inline-block;background:rgba(255,191,60,.18);border:1px solid rgba(255,191,60,.45);color:var(--gold);padding:9px 14px;border-radius:999px;font-weight:800}
+h1{font-size:clamp(44px,10vw,86px);line-height:.95;margin:22px 0 16px;font-weight:950}.hero p{font-size:20px;color:#ddd;max-width:560px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}.btn{padding:15px 22px;border-radius:18px;font-weight:900;background:var(--red)}.btn.alt{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22)}
+.section{padding:34px 18px;max-width:1200px;margin:auto}.title{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}h2{font-size:34px;margin:0}
+.delivery{background:linear-gradient(135deg,#25180a,#3a2306);border:1px solid rgba(255,191,60,.35);border-radius:24px;padding:22px;display:flex;gap:15px;align-items:center}.delivery b{color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}.card{background:linear-gradient(180deg,#1d1d20,#111113);border:1px solid rgba(255,255,255,.08);border-radius:26px;overflow:hidden;box-shadow:0 16px 35px rgba(0,0,0,.3);transition:.25s}.card:hover{transform:translateY(-6px)}.card img{width:100%;height:180px;object-fit:cover;display:block}.info{padding:16px}.info h3{margin:0 0 8px;font-size:21px}.info p{margin:0 0 13px;color:var(--muted);font-size:14px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.price{color:var(--gold);font-size:22px;font-weight:950}
+button{border:0;border-radius:15px;background:var(--red);color:#fff;font-weight:900;padding:12px 14px;cursor:pointer}
+.cart{max-width:1200px;margin:20px auto 35px;background:rgba(20,20,22,.96);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:20px;box-shadow:0 20px 55px #000}
+.cart h3{margin:0 0 10px;font-size:26px}.cartLine{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.08);padding:10px 0;color:#ddd}.remove{background:#333;padding:7px 10px;border-radius:10px}
+.total{font-size:24px;font-weight:950;margin:14px 0;color:var(--gold)}.form{display:grid;grid-template-columns:1fr 1fr;gap:10px}input{width:100%;padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#0e0e10;color:#fff}.full{grid-column:1/-1}.order{width:100%;margin-top:10px;background:var(--gold);color:#111;font-size:16px}.note{color:var(--muted);font-size:14px;margin-top:8px}footer{padding:38px 18px;text-align:center;color:#888}
+@media(max-width:700px){.hero{min-height:86vh}.form{grid-template-columns:1fr}.cart{margin:18px}.section{padding:28px 14px}.card img{height:165px}.title{display:block}h1{font-size:48px}}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="logo">🔥 Mangal House</div>
-  <div class="sub">Шашлык • Шаурма • Бургеры • Гиро</div>
+<header class="hero">
+  <div class="nav"><div class="logo">Mangal <span>House</span></div><a class="cartBtn" href="#cart">🛒 Заказ</a></div>
+  <div class="heroBox">
+    <div class="badge">🔥 Горячее с мангала</div>
+    <h1>Вкус, который хочется повторить</h1>
+    <p>Шашлык, шаурма, гиро, бургеры и горячие блюда с доставкой.</p>
+    <div class="actions"><a href="#menu" class="btn">Смотреть меню</a><a href="#cart" class="btn alt">Оформить заказ</a></div>
+  </div>
 </header>
-
-<section class="hero">
-  <h1>Вкусно. Сочно. С огня.</h1>
-  <p class="sub">Закажите любимые блюда прямо сейчас</p>
-  <img class="heroImg" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80">
+<section class="section"><div class="delivery"><div style="font-size:36px">🎉</div><div><b>Бесплатная доставка от 1500 ₽</b><br><span style="color:#ccc">Сумма заказа считается автоматически.</span></div></div></section>
+<section class="section" id="menu"><div class="title"><h2>Меню</h2><span style="color:#aaa">нажмите «Добавить»</span></div><div class="grid" id="menuGrid"></div></section>
+<section class="cart" id="cart">
+  <h3>Ваш заказ</h3><div id="cartList"><div class="note">Корзина пока пустая</div></div><div class="total" id="total">Итого: 0 ₽</div><div id="freeNote" class="note">До бесплатной доставки: 1500 ₽</div>
+  <div class="form"><input id="name" placeholder="Ваше имя"><input id="phone" placeholder="Телефон"><input id="address" class="full" placeholder="Адрес доставки"></div>
+  <button class="order" onclick="sendOrder()">Отправить заказ в Telegram</button>
+  <div class="note">Замените BOT_TOKEN и CHAT_ID в коде на свои данные.</div>
 </section>
-
-<section class="menu" id="menu"></section>
-
-<section class="cart">
-  <h2>🛒 Корзина</h2>
-  <div id="cartList"><p class="sub">Корзина пуста</p></div>
-  <h3 id="total">Итого: 0 ₽</h3>
-  <p id="freeNote">До бесплатной доставки: 1500 ₽</p>
-
-  <h2>Оформить заказ</h2>
-  <input id="name" placeholder="Ваше имя">
-  <input id="phone" placeholder="Телефон">
-
-  <select id="deliveryType">
-    <option value="Доставка">Доставка</option>
-    <option value="Самовывоз">Самовывоз</option>
-  </select>
-
-  <textarea id="address" placeholder="Адрес / комментарий"></textarea>
-
-  <button class="btn" onclick="sendOrder()">Отправить заказ</button>
-</section>
-
-<footer>Mangal House © 2026</footer>
-
+<footer>© Mangal House</footer>
 <script>
-const TOKEN = "8844451619:AAGnvz6kukcd_XAaM_QGgk_SEjUlOV-Et38";
-const CHAT_ID = "-5147520101";
-
-let cart = [];
-
-let products = [
-{name:"Шаурма классическая",price:260,img:"https://placehold.co/800x600?text=Шаурма"},
-{name:"Шаурма мега",price:320,img:"https://placehold.co/800x600?text=Шаурма+мега"},
-{name:"Гиро в лаваше",price:280,img:"https://placehold.co/800x600?text=Гиро"},
-{name:"Гиро в лаваше мега",price:350,img:"https://placehold.co/800x600?text=Гиро+мега"},
-{name:"Люля-кебаб куриный",price:250,img:"https://placehold.co/800x600?text=Люля+курица"},
-{name:"Люля-кебаб говяжий",price:280,img:"https://placehold.co/800x600?text=Люля+говядина"},
-{name:"Люля-кебаб баранина",price:300,img:"https://placehold.co/800x600?text=Люля+баранина"},
-{name:"Сувлаки курица",price:260,img:"https://placehold.co/800x600?text=Сувлаки+курица"},
-{name:"Сувлаки свинина",price:280,img:"https://placehold.co/800x600?text=Сувлаки+свинина"},
-{name:"Бургер куриный",price:280,img:"https://placehold.co/800x600?text=Бургер"},
-{name:"Супер говяжий бургер",price:360,img:"https://placehold.co/800x600?text=Говяжий+бургер"},
-{name:"Картофель фри",price:160,img:"https://placehold.co/800x600?text=Картофель+фри"}
+const BOT_TOKEN = "PASTE_BOT_TOKEN_HERE";
+const CHAT_ID = "PASTE_CHAT_ID_HERE";
+const items=[
+{name:"Шашлык из свинины",price:450,desc:"Сочный шашлык с мангала",img:"https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80"},
+{name:"Шашлык из курицы",price:390,desc:"Нежная курица на углях",img:"https://images.unsplash.com/photo-1604908177522-4029638f49c1?auto=format&fit=crop&w=900&q=80"},
+{name:"Люля-кебаб",price:360,desc:"Ароматный кебаб с зеленью",img:"https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?auto=format&fit=crop&w=900&q=80"},
+{name:"Шаурма классическая",price:290,desc:"Мясо, овощи и фирменный соус",img:"https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=900&q=80"},
+{name:"Гиро в лаваше мега",price:340,desc:"Большая порция в лаваше",img:"https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=900&q=80"},
+{name:"Бургер говяжий",price:370,desc:"Котлета, сыр, соус, овощи",img:"https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80"},
+{name:"Картофель фри",price:170,desc:"Хрустящий картофель",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80"},
+{name:"Хот-дог",price:220,desc:"В булочке или лаваше",img:"https://images.unsplash.com/photo-1612392062631-94dd858cba88?auto=format&fit=crop&w=900&q=80"}
 ];
-
-function renderMenu(){
-  document.getElementById("menu").
+let cart=[];
+const grid=document.getElementById("menuGrid");
+grid.innerHTML=items.map((x,i)=>`<div class="card"><img src="${x.img}"><div class="info"><h3>${x.name}</h3><p>${x.desc}</p><div class="row"><div class="price">${x.price} ₽</div><button onclick="addItem(${i})">Добавить</button></div></div></div>`).join("");
+function addItem(i){cart.push(items[i]);renderCart();location.hash="cart"}
+function removeItem(i){cart.splice(i,1);renderCart()}
+function renderCart(){
+ let sum=cart.reduce((a,b)=>a+b.price,0);
+ document.getElementById("cartList").innerHTML=cart.length?cart.map((x,i)=>`<div class="cartLine"><span>${i+1}. ${x.name}</span><span><b>${x.price} ₽</b> <button class="remove" onclick="removeItem(${i})">×</button></span></div>`).join(""):`<div class="note">Корзина пока пустая</div>`;
+ document.getElementById("total").textContent="Итого: "+sum+" ₽";
+ document.getElementById("freeNote").textContent=sum>=1500?"🎉 Доставка бесплатная":"До бесплатной доставки: "+(1500-sum)+" ₽";
+}
+function sendOrder(){
+ let name=document.getElementById("name").value.trim(), phone=document.getElementById("phone").value.trim(), address=document.getElementById("address").value.trim();
+ if(!cart.length){alert("Добавьте блюдо в корзину");return}
+ if(!name||!phone||!address){alert("Заполните имя, телефон и адрес");return}
+ let sum=cart.reduce((a,b)=>a+b.price,0);
+ let text=`🍽 Новый заказ Mangal House%0A%0A👤 Имя: ${name}%0A📞 Телефон: ${phone}%0A📍 Адрес: ${address}%0A%0A🛒 Заказ:%0A${cart.map((x,i)=>`${i+1}. ${x.name} — ${x.price} ₽`).join("%0A")}%0A%0A💰 Итого: ${sum} ₽%0A🚚 ${sum>=1500?"Бесплатная доставка":"Доставка платная"}`;
+ if(BOT_TOKEN.includes("PASTE")||CHAT_ID.includes("PASTE")){alert("Сначала вставьте BOT_TOKEN и CHAT_ID в коде");return}
+ fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`).then(()=>alert("Заказ отправлен")).catch(()=>alert("Ошибка отправки"));
+}
+renderCart();
+</script>
+</body>
+</html>
