@@ -3,77 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mangal House — доставка еды</title>
+<title>Mangal House — Authentic Grill • Street Food</title>
 <style>
-:root{--bg:#0b0b0c;--card:#171719;--gold:#ffbf3c;--red:#ff3b30;--text:#fff;--muted:#b7b7b7}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text)}a{text-decoration:none;color:inherit}
-.hero{min-height:92vh;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.42)),url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1600&q=85') center/cover;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
-.nav{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:950;font-size:25px}.logo span{color:var(--gold)}.cartBtn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:12px 16px;border-radius:999px}
-.heroBox{max-width:760px;margin-bottom:55px}.badge{display:inline-block;background:rgba(255,191,60,.18);border:1px solid rgba(255,191,60,.45);color:var(--gold);padding:9px 14px;border-radius:999px;font-weight:800}
-h1{font-size:clamp(44px,10vw,86px);line-height:.95;margin:22px 0 16px;font-weight:950}.hero p{font-size:20px;color:#ddd;max-width:560px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}.btn{padding:15px 22px;border-radius:18px;font-weight:900;background:var(--red)}.btn.alt{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22)}
-.section{padding:34px 18px;max-width:1200px;margin:auto}.title{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}h2{font-size:34px;margin:0}
-.delivery{background:linear-gradient(135deg,#25180a,#3a2306);border:1px solid rgba(255,191,60,.35);border-radius:24px;padding:22px;display:flex;gap:15px;align-items:center}.delivery b{color:var(--gold)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}.card{background:linear-gradient(180deg,#1d1d20,#111113);border:1px solid rgba(255,255,255,.08);border-radius:26px;overflow:hidden;box-shadow:0 16px 35px rgba(0,0,0,.3);transition:.25s}.card:hover{transform:translateY(-6px)}.card img{width:100%;height:180px;object-fit:cover;display:block}.info{padding:16px}.info h3{margin:0 0 8px;font-size:21px}.info p{margin:0 0 13px;color:var(--muted);font-size:14px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.price{color:var(--gold);font-size:22px;font-weight:950}
-button{border:0;border-radius:15px;background:var(--red);color:#fff;font-weight:900;padding:12px 14px;cursor:pointer}
-.cart{max-width:1200px;margin:20px auto 35px;background:rgba(20,20,22,.96);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:20px;box-shadow:0 20px 55px #000}
-.cart h3{margin:0 0 10px;font-size:26px}.cartLine{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.08);padding:10px 0;color:#ddd}.remove{background:#333;padding:7px 10px;border-radius:10px}
-.total{font-size:24px;font-weight:950;margin:14px 0;color:var(--gold)}.form{display:grid;grid-template-columns:1fr 1fr;gap:10px}input{width:100%;padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#0e0e10;color:#fff}.full{grid-column:1/-1}.order{width:100%;margin-top:10px;background:var(--gold);color:#111;font-size:16px}.note{color:var(--muted);font-size:14px;margin-top:8px}footer{padding:38px 18px;text-align:center;color:#888}
-@media(max-width:700px){.hero{min-height:86vh}.form{grid-template-columns:1fr}.cart{margin:18px}.section{padding:28px 14px}.card img{height:165px}.title{display:block}h1{font-size:48px}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;background:#0b0b0b;color:#fff}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px 6%;background:#0b0b0bf2;border-bottom:1px solid #3b2b18}.brand{font-weight:900;color:#e3b35f}nav{display:flex;gap:20px}nav button{background:none;border:0;color:#ddd;font-weight:700;cursor:pointer}nav button.active{color:#e3b35f}.page{display:none}.page.active{display:block}.hero{min-height:82vh;display:flex;align-items:center;padding:70px 7%;background:linear-gradient(90deg,#080808ee,#08080855),url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1800&q=88') center/cover}.hero-content{max-width:700px}.eyebrow{color:#e3b35f;text-transform:uppercase;letter-spacing:.15em;font-size:13px;font-weight:900}h1{font-size:clamp(44px,7vw,82px);margin:14px 0}h2{font-size:36px;color:#e3b35f}.hero p{font-size:19px;line-height:1.7;color:#d7d0c4}.btn{display:inline-block;padding:14px 22px;border:0;border-radius:14px;background:#e3b35f;color:#16100a;font-weight:900;cursor:pointer}.btn.secondary{background:#171717;color:#fff;border:1px solid #e3b35f}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.badges span{padding:10px 13px;background:#151515cc;border:1px solid #5c4323;border-radius:999px}.section{padding:60px 7%}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#151515;border:1px solid #33291f;border-radius:22px;padding:24px}.toolbar{position:sticky;top:65px;z-index:20;background:#0b0b0bf2;padding:18px 7%}.toolbar input{width:100%;padding:14px;border-radius:12px;border:1px solid #3a2d20;background:#151515;color:#fff}.filters{display:flex;gap:8px;overflow:auto;padding-top:12px}.filters button{white-space:nowrap;padding:9px 13px;border-radius:999px;border:1px solid #49351e;background:#151515;color:#ddd}.filters button.active{background:#e3b35f;color:#16100a}.menu-wrap{padding:25px 7% 90px}.category-title{color:#e3b35f;margin-top:28px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.dish{background:#151515;border:1px solid #33291f;border-radius:20px;overflow:hidden}.dish img{width:100%;height:200px;object-fit:cover}.dish-body{padding:16px}.dish-body h3{margin:0 0 8px}.dish-body p{color:#aaa;min-height:40px}.dish-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px}.dish-bottom strong{color:#e3b35f;font-size:20px}.dish-bottom button{background:#e3b35f;border:0;border-radius:10px;padding:9px 11px;font-weight:900}.cart-btn{position:fixed;right:18px;bottom:18px;z-index:40;padding:14px 17px;border:0;border-radius:15px;background:#e3b35f;font-weight:900}.modal{display:none;position:fixed;inset:0;background:#000b;z-index:100;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{position:relative;width:min(560px,100%);max-height:92vh;overflow:auto;background:#141414;border:1px solid #5a4124;border-radius:22px;padding:22px}.close{position:absolute;right:14px;top:8px;background:none;border:0;color:#fff;font-size:32px}.cart-line{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #282828}.qty button{width:28px;height:28px;background:#2a221a;color:#fff;border:0;border-radius:7px}.field{width:100%;margin:7px 0;padding:13px;border-radius:11px;border:1px solid #3a2d20;background:#0e0e0e;color:#fff}.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.choice label{padding:12px;border:1px solid #3a2d20;border-radius:11px;background:#181818}.contacts{display:grid;grid-template-columns:1fr 1.2fr;gap:20px}iframe{width:100%;height:470px;border:0;border-radius:20px}footer{padding:28px 7%;border-top:1px solid #33291f;color:#aaa}@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.features,.contacts{grid-template-columns:1fr}}@media(max-width:650px){header{flex-direction:column;gap:12px}nav{gap:10px;flex-wrap:wrap;justify-content:center}.grid{grid-template-columns:1fr}.hero{padding:55px 6%}.toolbar{top:101px}.choice{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="nav"><div class="logo">Mangal <span>House</span></div><a class="cartBtn" href="#cart">🛒 Заказ</a></div>
-  <div class="heroBox">
-    <div class="badge">🔥 Горячее с мангала</div>
-    <h1>Вкус, который хочется повторить</h1>
-    <p>Шашлык, шаурма, гиро, бургеры и горячие блюда с доставкой.</p>
-    <div class="actions"><a href="#menu" class="btn">Смотреть меню</a><a href="#cart" class="btn alt">Оформить заказ</a></div>
-  </div>
+<header>
+  <div class="brand">🔥 MANGAL HOUSE</div>
+  <nav>
+    <button class="active" onclick="showPage('home',this)">Главная</button>
+    <button onclick="showPage('menu',this)">Меню</button>
+    <button onclick="showPage('contacts',this)">Контакты</button>
+  </nav>
 </header>
-<section class="section"><div class="delivery"><div style="font-size:36px">🎉</div><div><b>Бесплатная доставка от 1500 ₽</b><br><span style="color:#ccc">Сумма заказа считается автоматически.</span></div></div></section>
-<section class="section" id="menu"><div class="title"><h2>Меню</h2><span style="color:#aaa">нажмите «Добавить»</span></div><div class="grid" id="menuGrid"></div></section>
-<section class="cart" id="cart">
-  <h3>Ваш заказ</h3><div id="cartList"><div class="note">Корзина пока пустая</div></div><div class="total" id="total">Итого: 0 ₽</div><div id="freeNote" class="note">До бесплатной доставки: 1500 ₽</div>
-  <div class="form"><input id="name" placeholder="Ваше имя"><input id="phone" placeholder="Телефон"><input id="address" class="full" placeholder="Адрес доставки"></div>
-  <button class="order" onclick="sendOrder()">Отправить заказ в Telegram</button>
-  <div class="note">Замените BOT_TOKEN и CHAT_ID в коде на свои данные.</div>
+
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Authentic Grill • Street Food</div>
+      <h1>Огонь. Вкус. Настоящий мангал.</h1>
+      <p>Шашлык, шаурма, бургеры, рыба и овощи на углях в Ставрополе.</p>
+      <div class="actions">
+        <button class="btn" onclick="showPage('menu',document.querySelectorAll('nav button')[1])">Смотреть меню</button>
+        <a class="btn secondary" href="tel:+79682614545">Позвонить</a>
+      </div>
+      <div class="badges"><span>🚚 Бесплатно от 1500 ₽</span><span>🥡 Доставка / Самовывоз</span><span>⏰ 08:00–21:00</span></div>
+    </div>
+  </div>
+  <div class="section"><div class="features">
+    <div class="card"><h3>🔥 Готовим на углях</h3><p>Свежие блюда с настоящим ароматом дыма.</p></div>
+    <div class="card"><h3>🛒 Удобный заказ</h3><p>Выберите блюда и отправьте заказ прямо в Telegram.</p></div>
+    <div class="card"><h3>🚚 Бесплатная доставка</h3><p>При заказе от 1500 ₽.</p></div>
+  </div></div>
 </section>
-<footer>© Mangal House</footer>
+
+<section id="menu" class="page">
+  <div class="toolbar">
+    <input id="search" placeholder="Поиск по меню..." oninput="renderMenu()">
+    <div id="filters" class="filters"></div>
+  </div>
+  <div class="menu-wrap"><div id="menuRoot"></div></div>
+</section>
+
+<section id="contacts" class="page">
+  <div class="section contacts">
+    <div class="card">
+      <h2>Контакты</h2>
+      <p>📍 Ставрополь, ул. Гражданская, 2</p>
+      <p>📞 <a href="tel:+79682614545">+7 (968) 261-45-45</a></p>
+      <p>⏰ Ежедневно: 08:00–21:00</p>
+      <p>🚚 Бесплатная доставка от 1500 ₽</p>
+      <p>🥡 Доставка / Самовывоз</p>
+    </div>
+    <iframe src="https://www.google.com/maps?q=Ставрополь,+ул.+Гражданская,+2&output=embed" loading="lazy"></iframe>
+  </div>
+</section>
+
+<button class="cart-btn" onclick="openCart()">🛒 Корзина <span id="cartCount">0</span></button>
+
+<div id="modal" class="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeCart()">×</button>
+    <h2>Ваш заказ</h2>
+    <div id="cartList"></div>
+    <h3>Итого: <span id="total">0</span> ₽</h3>
+    <p id="deliveryNote">До бесплатной доставки: 1500 ₽</p>
+    <div class="choice">
+      <label><input type="radio" name="type" value="Доставка" checked onchange="toggleAddress()"> 🚚 Доставка</label>
+      <label><input type="radio" name="type" value="Самовывоз" onchange="toggleAddress()"> 🥡 Самовывоз</label>
+    </div>
+    <input id="name" class="field" placeholder="Ваше имя">
+    <input id="phone" class="field" placeholder="Телефон">
+    <input id="address" class="field" placeholder="Адрес доставки">
+    <textarea id="comment" class="field" rows="3" placeholder="Комментарий"></textarea>
+    <button class="btn" style="width:100%" onclick="sendOrder()">Отправить заказ</button>
+  </div>
+</div>
+
+<footer>© Mangal House • Ставрополь, ул. Гражданская, 2 • +7 (968) 261-45-45</footer>
+
 <script>
-const BOT_TOKEN = "PASTE_BOT_TOKEN_HERE";
-const CHAT_ID = "PASTE_CHAT_ID_HERE";
-const items=[
-{name:"Шашлык из свинины",price:450,desc:"Сочный шашлык с мангала",img:"https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80"},
-{name:"Шашлык из курицы",price:390,desc:"Нежная курица на углях",img:"https://images.unsplash.com/photo-1604908177522-4029638f49c1?auto=format&fit=crop&w=900&q=80"},
-{name:"Люля-кебаб",price:360,desc:"Ароматный кебаб с зеленью",img:"https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?auto=format&fit=crop&w=900&q=80"},
-{name:"Шаурма классическая",price:290,desc:"Мясо, овощи и фирменный соус",img:"https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=900&q=80"},
-{name:"Гиро в лаваше мега",price:340,desc:"Большая порция в лаваше",img:"https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=900&q=80"},
-{name:"Бургер говяжий",price:370,desc:"Котлета, сыр, соус, овощи",img:"https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80"},
-{name:"Картофель фри",price:170,desc:"Хрустящий картофель",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80"},
-{name:"Хот-дог",price:220,desc:"В булочке или лаваше",img:"https://images.unsplash.com/photo-1612392062631-94dd858cba88?auto=format&fit=crop&w=900&q=80"}
-];
+const ENDPOINT="https://script.google.com/macros/s/AKfycbxIv1I_r8ZXgeCXlMzQh1z8HAcJm2jyh66nPsEuAEgh52xxKasMC4tN1ajH7XmhR35Z_A/exec";
+const FREE=1500;
+const DATA=[{"section": "Мангал гриль", "category": "Свинина", "name": "Свинина — мякоть", "price": 220, "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80", "desc": "Сочная свинина на углях."}, {"section": "Мангал гриль", "category": "Свинина", "name": "Свиной антрекот", "price": 220, "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80", "desc": "Антрекот с румяной корочкой."}, {"section": "Мангал гриль", "category": "Свинина", "name": "Свиные рёбра", "price": 220, "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80", "desc": "Нежные рёбра на мангале."}, {"section": "Мангал гриль", "category": "Свинина", "name": "Шея без кости", "price": 240, "image": "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=900&q=80", "desc": "Сочная свиная шея без кости."}, {"section": "Мангал гриль", "category": "Баранина", "name": "Баранина — мякоть", "price": 260, "image": "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=900&q=80", "desc": "Мягкая баранина с ароматом углей."}, {"section": "Мангал гриль", "category": "Баранина", "name": "Бараньи пистолеты", "price": 280, "image": "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=900&q=80", "desc": "Баранья корейка на косточке."}, {"section": "Мангал гриль", "category": "Курица", "name": "Куриные крылья", "price": 150, "image": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=80", "desc": "Румяные крылышки на углях."}, {"section": "Мангал гриль", "category": "Курица", "name": "Куриная голень", "price": 150, "image": "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=900&q=80", "desc": "Сочная голень на мангале."}, {"section": "Мангал гриль", "category": "Курица", "name": "Куриное филе", "price": 170, "image": "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=80", "desc": "Нежное куриное филе."}, {"section": "Мангал гриль", "category": "Говядина", "name": "Печень по-царски", "price": 250, "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80", "desc": "Говяжья печень по фирменному рецепту."}, {"section": "Блюда на углях", "category": "Сувлаки", "name": "Сувлаки с курицей", "price": 160, "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80", "desc": "Курица на шпажке."}, {"section": "Блюда на углях", "category": "Сувлаки", "name": "Сувлаки с говядиной", "price": 210, "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80", "desc": "Говядина на шпажке."}, {"section": "Блюда на углях", "category": "Сувлаки", "name": "Сувлаки со свининой", "price": 180, "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80", "desc": "Свинина на шпажке."}, {"section": "Блюда на углях", "category": "Люля-кебаб", "name": "Люля-кебаб с курицей", "price": 170, "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80", "desc": "Нежный куриный люля-кебаб."}, {"section": "Блюда на углях", "category": "Люля-кебаб", "name": "Люля-кебаб с говядиной", "price": 230, "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80", "desc": "Сочный люля-кебаб из говядины."}, {"section": "Блюда на углях", "category": "Люля-кебаб", "name": "Люля-кебаб с бараниной", "price": 240, "image": "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=900&q=80", "desc": "Ароматный люля-кебаб из баранины."}, {"section": "Блюда на углях", "category": "Шаурма", "name": "Шаурма с курицей", "price": 270, "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=900&q=80", "desc": "Курица, овощи и фирменный соус."}, {"section": "Блюда на углях", "category": "Шаурма", "name": "Шаурма со свининой", "price": 320, "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=900&q=80", "desc": "Свинина, овощи и фирменный соус."}, {"section": "Блюда на углях", "category": "Сэндвичи", "name": "Сэндвич с курицей", "price": 280, "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80", "desc": "Горячий сэндвич с курицей."}, {"section": "Блюда на углях", "category": "Сэндвичи", "name": "Сэндвич с ветчиной", "price": 260, "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80", "desc": "Сытный сэндвич с ветчиной."}, {"section": "Блюда на углях", "category": "Гиро", "name": "Гиро в лаваше", "price": 280, "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=900&q=80", "desc": "Мясо, овощи и соус в лаваше."}, {"section": "Блюда на углях", "category": "Гиро", "name": "Гиро в лаваше мега", "price": 340, "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=900&q=80", "desc": "Большая порция гиро в лаваше."}, {"section": "Блюда на углях", "category": "Гиро", "name": "Гиро на тарелке", "price": 350, "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80", "desc": "Гиро с гарниром на тарелке."}, {"section": "Бургеры и закуски", "category": "Бургеры", "name": "Бургер с куриным стейком", "price": 350, "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80", "desc": "Куриный стейк, овощи и соус."}, {"section": "Бургеры и закуски", "category": "Бургеры", "name": "Бургер с куриным фаршем", "price": 370, "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80", "desc": "Куриная котлета, овощи и соус."}, {"section": "Бургеры и закуски", "category": "Бургеры", "name": "Супер говяжий бургер", "price": 540, "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80", "desc": "Большой бургер с говяжьей котлетой."}, {"section": "Бургеры и закуски", "category": "Бургеры", "name": "Супер сырный бургер", "price": 600, "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80", "desc": "Большой бургер с большим количеством сыра."}, {"section": "Бургеры и закуски", "category": "Хот-доги", "name": "Хот-дог в булочке", "price": 240, "image": "https://images.unsplash.com/photo-1612392062631-94dd858cba88?auto=format&fit=crop&w=900&q=80", "desc": "Хот-дог в мягкой булочке."}, {"section": "Бургеры и закуски", "category": "Хот-доги", "name": "Хот-дог в лаваше", "price": 240, "image": "https://images.unsplash.com/photo-1612392062631-94dd858cba88?auto=format&fit=crop&w=900&q=80", "desc": "Хот-дог с овощами в лаваше."}, {"section": "Бургеры и закуски", "category": "Закуски", "name": "Картошка фри", "price": 190, "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80", "desc": "Хрустящая картошка фри."}, {"section": "Бургеры и закуски", "category": "Закуски", "name": "Картофель по-деревенски", "price": 190, "image": "https://images.unsplash.com/photo-1623238913973-21e45cced554?auto=format&fit=crop&w=900&q=80", "desc": "Картофельные дольки со специями."}, {"section": "Бургеры и закуски", "category": "Закуски", "name": "Креветки в кляре", "price": 340, "image": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=900&q=80", "desc": "Креветки в хрустящем кляре."}, {"section": "Бургеры и закуски", "category": "Закуски", "name": "Сырные палочки", "price": 230, "image": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=900&q=80", "desc": "Хрустящие сырные палочки."}, {"section": "Бургеры и закуски", "category": "Закуски", "name": "Наггетсы", "price": 230, "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=900&q=80", "desc": "Куриные наггетсы."}, {"section": "Рыба и овощи", "category": "Рыба", "name": "Карп на мангале", "price": 250, "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80", "desc": "Карп, приготовленный на углях."}, {"section": "Рыба и овощи", "category": "Рыба", "name": "Сёмга на мангале", "price": 350, "image": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80", "desc": "Нежная сёмга на гриле."}, {"section": "Рыба и овощи", "category": "Рыба", "name": "Форель на мангале", "price": 300, "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80", "desc": "Форель, приготовленная на углях."}, {"section": "Рыба и овощи", "category": "Овощи", "name": "Грибы шампиньоны", "price": 150, "image": "https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=900&q=80", "desc": "Шампиньоны на мангале."}, {"section": "Рыба и овощи", "category": "Овощи", "name": "Картофель с салом", "price": 70, "image": "https://images.unsplash.com/photo-1623238913973-21e45cced554?auto=format&fit=crop&w=900&q=80", "desc": "Картофель с салом на углях."}, {"section": "Рыба и овощи", "category": "Овощи", "name": "Талая картошка", "price": 80, "image": "https://images.unsplash.com/photo-1623238913973-21e45cced554?auto=format&fit=crop&w=900&q=80", "desc": "Картофель по фирменному рецепту."}, {"section": "Рыба и овощи", "category": "Овощи", "name": "Аджапсандали", "price": 150, "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80", "desc": "Овощи, запечённые на мангале."}, {"section": "Добавки и соусы", "category": "Суп", "name": "Хаш", "price": 450, "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=80", "desc": "Традиционный горячий суп."}, {"section": "Добавки и соусы", "category": "Добавки к шаурме", "name": "Добавка: сыр", "price": 60, "image": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=900&q=80", "desc": "Дополнительная порция сыра."}, {"section": "Добавки и соусы", "category": "Добавки к шаурме", "name": "Добавка: картошка", "price": 60, "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80", "desc": "Дополнительная порция картофеля."}, {"section": "Добавки и соусы", "category": "Добавки к шаурме", "name": "Добавка: халапеньо", "price": 60, "image": "https://images.unsplash.com/photo-1583663848850-46af132dc08e?auto=format&fit=crop&w=900&q=80", "desc": "Острый перец халапеньо."}, {"section": "Добавки и соусы", "category": "Добавки к шаурме", "name": "Добавка: грибы", "price": 60, "image": "https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=900&q=80", "desc": "Дополнительная порция грибов."}, {"section": "Добавки и соусы", "category": "Соусы", "name": "Белый фирменный соус", "price": 90, "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?auto=format&fit=crop&w=900&q=80", "desc": "Нежный белый соус."}, {"section": "Добавки и соусы", "category": "Соусы", "name": "Красный фирменный соус", "price": 90, "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?auto=format&fit=crop&w=900&q=80", "desc": "Ароматный красный соус."}, {"section": "Добавки и соусы", "category": "Соусы", "name": "Наршараб", "price": 60, "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?auto=format&fit=crop&w=900&q=80", "desc": "Гранатовый соус."}, {"section": "Добавки и соусы", "category": "Соусы", "name": "Соус Heinz", "price": 60, "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?auto=format&fit=crop&w=900&q=80", "desc": "Соус Heinz в ассортименте."}];
 let cart=[];
-const grid=document.getElementById("menuGrid");
-grid.innerHTML=items.map((x,i)=>`<div class="card"><img src="${x.img}"><div class="info"><h3>${x.name}</h3><p>${x.desc}</p><div class="row"><div class="price">${x.price} ₽</div><button onclick="addItem(${i})">Добавить</button></div></div></div>`).join("");
-function addItem(i){cart.push(items[i]);renderCart();location.hash="cart"}
-function removeItem(i){cart.splice(i,1);renderCart()}
-function renderCart(){
- let sum=cart.reduce((a,b)=>a+b.price,0);
- document.getElementById("cartList").innerHTML=cart.length?cart.map((x,i)=>`<div class="cartLine"><span>${i+1}. ${x.name}</span><span><b>${x.price} ₽</b> <button class="remove" onclick="removeItem(${i})">×</button></span></div>`).join(""):`<div class="note">Корзина пока пустая</div>`;
- document.getElementById("total").textContent="Итого: "+sum+" ₽";
- document.getElementById("freeNote").textContent=sum>=1500?"🎉 Доставка бесплатная":"До бесплатной доставки: "+(1500-sum)+" ₽";
-}
-function sendOrder(){
- let name=document.getElementById("name").value.trim(), phone=document.getElementById("phone").value.trim(), address=document.getElementById("address").value.trim();
- if(!cart.length){alert("Добавьте блюдо в корзину");return}
- if(!name||!phone||!address){alert("Заполните имя, телефон и адрес");return}
- let sum=cart.reduce((a,b)=>a+b.price,0);
- let text=`🍽 Новый заказ Mangal House%0A%0A👤 Имя: ${name}%0A📞 Телефон: ${phone}%0A📍 Адрес: ${address}%0A%0A🛒 Заказ:%0A${cart.map((x,i)=>`${i+1}. ${x.name} — ${x.price} ₽`).join("%0A")}%0A%0A💰 Итого: ${sum} ₽%0A🚚 ${sum>=1500?"Бесплатная доставка":"Доставка платная"}`;
- if(BOT_TOKEN.includes("PASTE")||CHAT_ID.includes("PASTE")){alert("Сначала вставьте BOT_TOKEN и CHAT_ID в коде");return}
- fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`).then(()=>alert("Заказ отправлен")).catch(()=>alert("Ошибка отправки"));
-}
-renderCart();
+let active="Все";
+
+function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0)}
+function renderFilters(){const sections=["Все",...new Set(DATA.map(x=>x.section))];document.getElementById('filters').innerHTML=sections.map(s=>`<button class="${s===active?'active':''}" onclick="active='${s}';renderFilters();renderMenu()">${s}</button>`).join('')}
+function renderMenu(){const q=(document.getElementById('search')?.value||'').toLowerCase();const rows=DATA.map((x,i)=>({...x,i})).filter(x=>(active==='Все'||x.section===active)&&(x.name.toLowerCase().includes(q)||x.category.toLowerCase().includes(q)||x.section.toLowerCase().includes(q)));const sections=[...new Set(rows.map(x=>x.section))];document.getElementById('menuRoot').innerHTML=sections.map(s=>{const sec=rows.filter(x=>x.section===s),cats=[...new Set(sec.map(x=>x.category))];return `<h2>${s}</h2>`+cats.map(c=>`<h3 class="category-title">${c}</h3><div class="grid">${sec.filter(x=>x.category===c).map(x=>`<div class="dish"><img src="${x.image}" alt="${x.name}" loading="lazy"><div class="dish-body"><h3>${x.name}</h3><p>${x.desc}</p><div class="dish-bottom"><strong>${x.price} ₽</strong><button onclick="add(${x.i})">Добавить</button></div></div></div>`).join('')}</div>`).join('')}).join('')||'<p>Ничего не найдено</p>'}
+function add(i){const p=DATA[i],f=cart.find(x=>x.name===p.name);f?f.qty++:cart.push({name:p.name,price:p.price,qty:1});updateCount()}
+function updateCount(){document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function total(){return cart.reduce((s,x)=>s+x.price*x.qty,0)}
+function renderCart(){document.getElementById('cartList').innerHTML=cart.length?cart.map((x,i)=>`<div class="cart-line"><span>${x.name}<br><small>${x.price} ₽ × ${x.qty}</small></span><div class="qty"><button onclick="qty(${i},-1)">−</button> <b>${x.qty}</b> <button onclick="qty(${i},1)">+</button></div><b>${x.price*x.qty} ₽</b></div>`).join(''):'<p>Корзина пуста</p>';const s=total();document.getElementById('total').textContent=s;document.getElementById('deliveryNote').textContent=s>=FREE?'🎉 Доставка бесплатная':'До бесплатной доставки: '+(FREE-s)+' ₽'}
+function qty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);updateCount();renderCart()}
+function openCart(){document.getElementById('modal').classList.add('show');renderCart()}
+function closeCart(){document.getElementById('modal').classList.remove('show')}
+function toggleAddress(){const type=document.querySelector('input[name="type"]:checked').value,a=document.getElementById('address');a.disabled=type==='Самовывоз';a.value=type==='Самовывоз'?'Самовывоз: Ставрополь, ул. Гражданская, 2':''}
+async function sendOrder(){if(!cart.length){alert('Корзина пуста');return}const name=document.getElementById('name').value.trim(),phone=document.getElementById('phone').value.trim(),address=document.getElementById('address').value.trim(),comment=document.getElementById('comment').value.trim(),type=document.querySelector('input[name="type"]:checked').value;if(!name||!phone){alert('Укажите имя и телефон');return}if(type==='Доставка'&&!address){alert('Укажите адрес');return}const s=total(),order=cart.map((x,i)=>`${i+1}. ${x.name} — ${x.qty} × ${x.price} ₽ = ${x.qty*x.price} ₽`).join('\n');const payload={name,phone,address:type==='Самовывоз'?'Самовывоз: Ставрополь, ул. Гражданская, 2':address,comment:`${comment||'-'}\nТип получения: ${type}`,order:`${order}\n\nИтого: ${s} ₽\nДоставка: ${type==='Самовывоз'?'самовывоз':(s>=FREE?'бесплатно':'уточнить')}`};try{await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});alert('Ваш заказ отправлен ✅');cart=[];updateCount();closeCart()}catch(e){alert('Ошибка отправки. Позвоните: +7 (968) 261-45-45')}}
+renderFilters();renderMenu();updateCount();
 </script>
 </body>
 </html>
